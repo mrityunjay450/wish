@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Special Gift</title>
+    <script>
+      function startCountdown() {
+        var inputDate = document.getElementById("birthday").value;
+
+        var birthday = new Date(inputDate);
+
+        var countdown = setInterval(function () {
+          var now = new Date().getTime();
+          var distance = birthday - now;
+
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("timer").innerHTML =
+            days + "d " + hours + "h  " + minutes + "m  " + seconds + "s  ";
+
+          if (distance < 0) {
+            clearInterval(countdown);
+            document.getElementById("timer").innerHTML = "Happy Birthday!";
+          } else {
+            document.getElementById("h").innerHTML =
+              "Happy Birthday In Advanced🥳🥳";
+            // var img = document.getElementById("img1");
+            // img.src = "my pic1.png";
+          }
+        }, 1000);
+      }
+    </script>
+    <style>
+      *{
+        margin: 35px;
+        text-align: center;
+        background-image: url(my\ pic1.png);
+        background-size: auto;
+        background-position-x:center;
+        background-position-y: 900px;
+        background-repeat: no-repeat;
+      }
+      #main {
+        
+      }
+      #head {
+        font-size: 90px;
+        background-color:transparent;
+      }
+      #date {
+        font-size: 45px;
+        font-weight: bold;
+      }
+      #birthday {
+        font-size: 60px;
+        font-weight: bold;
+        font-style: italic;
+        border-radius: 10px;
+        border-width: 10px;
+        border-color: blue;
+      }
+      #ch {
+        font-size: 30px;
+        block-size: 70px;
+        font-weight: 850;
+        background: transparent;
+        font-style: oblique;
+        border-radius: 8px;
+        border-color: red;
+        border-width: 5px;
+      }
+      #h {
+        font-size: 50px;
+      }
+      #timer {
+        font-size: 50px;
+      }
+      #img1 {
+        height: 600px;
+        width: auto;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1 id="head">Special gift for you 🎁</h1>
+    <label id="date">Enter UpComing Birthday Date:</label><br />
+    <input type="date" id="birthday" /><br />
+    <button onclick="startCountdown()" id="ch">Click here for surprise
+    </button>
+    <h2 id="timer"></h2>
+    <h2 id="h" align="center"></h2>
+    <!-- <div id="container">
+      <img id="img1" src="" alt="" /> -->
+    </div>
+    </div>
+  </body>
+</html>
