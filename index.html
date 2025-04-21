@@ -1,103 +1,427 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Special Gift</title>
-    <script>
-      function startCountdown() {
-        var inputDate = document.getElementById("birthday").value;
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mrityunjay Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=contrast" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
 
-        var birthday = new Date(inputDate);
+  <style>
+    .navbar-nav .nav-link {
+  position: relative;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+}
 
-        var countdown = setInterval(function () {
-          var now = new Date().getTime();
-          var distance = birthday - now;
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #0d6efd, #6610f2);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
 
-          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          var hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          );
-          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+.navbar-nav .nav-link:hover {
+  background-color: rgba(13, 110, 253, 0.1);
+}
 
-          document.getElementById("timer").innerHTML =
-            days + "d " + hours + "h  " + minutes + "m  " + seconds + "s  ";
+.navbar-nav .nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
 
-          if (distance < 0) {
-            clearInterval(countdown);
-            document.getElementById("timer").innerHTML = "Happy Birthday!";
-          } else {
-            document.getElementById("h").innerHTML =
-              "Happy Birthday In Advanced🥳🥳";
-            // var img = document.getElementById("img1");
-            // img.src = "my pic1.png";
-          }
-        }, 1000);
-      }
-    </script>
-    <style>
-      *{
-        margin: 35px;
-        text-align: center;
-        background-image: url(my\ pic1.png);
-        background-size: auto;
-        background-position-x:center;
-        background-position-y: 900px;
-        background-repeat: no-repeat;
-      }
-      #main {
-        
-      }
-      #head {
-        font-size: 90px;
-        background-color:transparent;
-      }
-      #date {
-        font-size: 45px;
-        font-weight: bold;
-      }
-      #birthday {
-        font-size: 60px;
-        font-weight: bold;
-        font-style: italic;
-        border-radius: 10px;
-        border-width: 10px;
-        border-color: blue;
-      }
-      #ch {
-        font-size: 30px;
-        block-size: 70px;
-        font-weight: 850;
-        background: transparent;
-        font-style: oblique;
-        border-radius: 8px;
-        border-color: red;
-        border-width: 5px;
-      }
-      #h {
-        font-size: 50px;
-      }
-      #timer {
-        font-size: 50px;
-      }
-      #img1 {
-        height: 600px;
-        width: auto;
-        border-radius: 50%;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="main">
-      <h1 id="head">Special gift for you 🎁</h1>
-    <label id="date">Enter UpComing Birthday Date:</label><br />
-    <input type="date" id="birthday" /><br />
-    <button onclick="startCountdown()" id="ch">Click here for surprise
-    </button>
-    <h2 id="timer"></h2>
-    <h2 id="h" align="center"></h2>
-    <!-- <div id="container">
-      <img id="img1" src="" alt="" /> -->
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+footer .nav-link:hover {
+  color: #0d6efd !important;
+  text-decoration: underline;
+}
+
+
+.dark-mode {
+  background-color: #181717;
+  color: white;
+}
+
+.light-mode {
+  background-color: white;
+  color: #181717;
+}
+
+  </style>
+
+</head>
+<body class="light-mode">
+
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm" data-aos="fade-down">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item mx-2"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item mx-2"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item mx-2"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item mx-2"><a class="nav-link" href="#contact">Contact Us</a></li>
+        </ul>
+        <button id="mode" class="btn"><span class="material-symbols-outlined">
+          contrast
+          </span></button>
+      </div>
     </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="py-5 bg-transparent" data-aos="fade-up">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1 class="fw-bold">Hi, I'm <span class="text-primary">Mrityunjay Kumar</span></h1>
+          <p class="lead">A passionate developer exploring the world of code.</p>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="My photo.jpg" class="img-fluid rounded-circle" alt="My Photo" width="250">
+
+        </div>
+      </div>
     </div>
-  </body>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-5 bg-transparent" data-aos="fade-up">
+    <div class="container">
+      <h2 class="text-center mb-5 fw-bold">My <span class="text-primary">Skills</span></h2>
+      <div class="row g-4">
+        <!-- Skill Example -->
+        <div class="col-md-6" data-aos="zoom-in">
+          <div class="p-4 border rounded shadow-sm">
+            <div class="d-flex align-items-center mb-2">
+              <img src="Images/html-icon.png" height="50" class="me-3" />
+              <h5 class="mb-0">HTML</h5>
+            </div>
+            <div class="progress">
+              <div class="progress-bar bg-danger" style="width: 90%;">90%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repeat this for other skills -->
+        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+          <div class="p-4 border rounded shadow-sm">
+            <div class="d-flex align-items-center mb-2">
+              <img src="Images/css-icon.png" height="50" class="me-3" />
+              <h5 class="mb-0">CSS</h5>
+            </div>
+            <div class="progress">
+              <div class="progress-bar bg-primary" style="width: 85%;">85%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="zoom-in">
+          <div class="p-4 border rounded shadow-sm">
+            <div class="d-flex align-items-center mb-2">
+              <img src="Images/python-con.png" height="50" class="me-3" />
+              <h5 class="mb-0">HTML</h5>
+            </div>
+            <div class="progress">
+              <div class="progress-bar bg-success" style="width: 90%;">90%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+          <div class="p-4 border rounded shadow-sm">
+            <div class="d-flex align-items-center mb-2">
+              <img src="Images/c++-con.png" height="50" class="me-3" />
+              <h5 class="mb-0">CSS</h5>
+            </div>
+            <div class="progress">
+              <div class="progress-bar bg-secondary" style="width: 85%;">85%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="zoom-in">
+          <div class="p-4 border rounded shadow-sm">
+            <div class="d-flex align-items-center mb-2">
+              <img src="Images/php-icon.png" height="50" class="me-3" />
+              <h5 class="mb-0">HTML</h5>
+            </div>
+            <div class="progress">
+              <div class="progress-bar bg-info" style="width: 90%;">90%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+          <div class="p-4 border rounded shadow-sm">
+            <div class="d-flex align-items-center mb-2">
+              <img src="Images/js-icon.png" height="50" class="me-3" />
+              <h5 class="mb-0">CSS</h5>
+            </div>
+            <div class="progress">
+              <div class="progress-bar bg-warning" style="width: 85%;">85%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add JS, Python, PHP, C++, C icons similarly -->
+      </div>
+    </div>
+  </section>
+
+
+  <section id="projects" class="py-5 bg-transparent" data-aos="fade-up">
+    <div class="container py-5 px-4">
+      <h2 class="text-center fw-bold mb-5">My <span class="text-primary">Projects</span></h2>
+      
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+  
+        <!-- Project 1 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm" data-aos="zoom-in">
+            <div class="card-body text-center">
+              <h5 class="card-title">House Price Prediction</h5>
+              <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#project1Modal">View Details</button>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Project 2 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card-body text-center">
+              <h5 class="card-title">Software Testing Tools</h5>
+              <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#project2Modal">View Details</button>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Project 3 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card-body text-center">
+              <h5 class="card-title">E-commerce Website</h5>
+              <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#project3Modal">View Details</button>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Project 4 -->
+        <div class="col">
+          <div class="card h-100 shadow-sm" data-aos="zoom-in" data-aos-delay="300">
+            <div class="card-body text-center">
+              <h5 class="card-title">Portfolio</h5>
+              <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#project4Modal">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Project 1 Modal -->
+<div class="modal fade" id="project1Modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">House Price Prediction</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        A machine learning project that predicts house prices based on features like location, area, number of rooms, etc.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Project 2 Modal -->
+<div class="modal fade" id="project2Modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Software Testing Tools</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Developed a tool for automated and manual software testing using various testing techniques and frameworks.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Project 3 Modal -->
+<div class="modal fade" id="project3Modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">E-commerce Website</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Built a fully responsive online store with shopping cart, user login, product catalog, and payment integration.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Project 4 Modal -->
+<div class="modal fade" id="project4Modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Portfolio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        This portfolio website showcases my projects, skills, and contact information using modern web technologies.
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="contact" class="py-5 bg-transparent" data-aos="fade-up">
+  <div class="container py-5 px-3">
+    <h2 class="text-center fw-bold mb-5">Contact <span class="text-primary">Us</span></h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form id="contactForm" class="p-4 shadow rounded bg-light">
+          
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="mobile" class="form-label">Mobile Number</label>
+            <input type="tel" class="form-control" id="mobile" placeholder="Enter your number" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea class="form-control" id="address" rows="3" placeholder="Your address" required></textarea>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary px-4">Submit</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-dark text-light pt-5 pb-3" data-aos="fade-up">
+  <div class="container text-center">
+    
+    <!-- Navigation Links -->
+    <ul class="nav justify-content-center mb-4">
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#skills">Skills</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#projects">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#contact">Contact Us</a>
+      </li>
+    </ul>
+
+    <!-- Copyright -->
+    <p class="mb-0">
+      &copy; <span id="year"></span> Developed by <span class="text-primary fw-semibold">Mrityunjay Kumar</span>
+    </p>
+  </div>
+</footer>
+
+
+  <!-- Scripts -->
+   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000, once: true });
+
+const text = "Mrityunjay Kumar";
+const typingSpeed = 150;
+const deletingSpeed = 80;
+const delayBetweenCycles = 1000;
+
+let index = 0;
+let isDeleting = false;
+const typingElement = document.getElementById("typing-text");
+
+function typeLoop() {
+  if (!isDeleting && index <= text.length) {
+    typingElement.innerHTML = text.substring(0, index);
+    index++;
+    setTimeout(typeLoop, typingSpeed);
+  } else if (isDeleting && index >= 0) {
+    typingElement.innerHTML = text.substring(0, index);
+    index--;
+    setTimeout(typeLoop, deletingSpeed);
+  } else {
+    isDeleting = !isDeleting;
+    setTimeout(typeLoop, delayBetweenCycles);
+  }
+}
+
+window.onload = typeLoop;
+
+
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault(); // Stop page refresh
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const mobile = document.getElementById("mobile").value;
+  const address = document.getElementById("address").value;
+
+  console.log("Form Submitted:");
+  console.log({ name, email, mobile, address });
+
+  alert("Thank you! Your response has been recorded.");
+});
+
+
+let modeBtn = document.querySelector("#mode");
+let body = document.body;
+
+modeBtn.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+  body.classList.toggle("light-mode");
+});
+
+  </script>
+  
+</body>
 </html>
